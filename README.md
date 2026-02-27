@@ -4,9 +4,14 @@ A template made for creating LaTeX documents using Docker or GitHub Codespaces.
 
 ## What is?
 
-This template creates a development environment for creating documents made in LaTeX. All it takes is that you have Visual Studio Code on your machine or use Github Codespaces.
+This template creates a ready-to-use development environment for compiling documents made in LaTeX. All it takes is that you have **Visual Studio Code and Docker** installed on your local machine, or simply use **GitHub Codespaces** right in your browser.
 
-If you just need the Docker image to build your environment, you can make use of it using this package: [MiKTeX-Image](https://github.com/andsfonseca/MiKTeX-Image/pkgs/container/miktex)
+## Container Configuration
+
+This environment is powered by a custom development container setup to provide an out-of-the-box experience:
+
+* **`Dockerfile`**: Extends the base Ubuntu 20.04 image to install the required TeX Live distributions (for compiling LaTeX) and **[Pandoc](https://pandoc.org/)** at the system level. This ensures all the necessary conversion tools are pre-installed during the image build.
+* **`devcontainer.json`**: Orchestrates the environment build and automatically installs the `James-Yu.latex-workshop` extension in VS Code. It also configures the default LaTeX recipes and build tools (`pdflatex`) to compile automatically on save.
 
 ## Usage
 
@@ -25,11 +30,11 @@ If you just need the Docker image to build your environment, you can make use of
 
 ## Word Conversion (Pandoc)
 
-This environment includes [Pandoc](https://pandoc.org/), the universal markup converter, allowing you to seamlessly convert your LaTeX source files into Microsoft Word (`.docx`) documents.
+This environment includes [Pandoc](https://pandoc.org/), the universal markup converter, allowing you to seamlessly convert your modular LaTeX source files (including `\input{}` files) into Microsoft Word (`.docx`) documents.
 
 ### How to use the conversion tasks
 
-We have provided built-in VS Code tasks to automate the conversion. To use them:
+We have provided built-in VS Code tasks (`.vscode/tasks.json`) to automate the conversion. To use them:
 
 1. Open the VS Code Command Palette (`Ctrl+Shift+P` on Windows/Linux, `Cmd+Shift+P` on macOS).
 2. Type and select **Tasks: Run Task**.
